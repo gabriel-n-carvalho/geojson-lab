@@ -10,7 +10,7 @@ No server, no account, no telemetry. The on-disk JSON is the single source of tr
 
 ## Live demo
 
-[geojson-lab.vercel.app](https://geojson-lab.vercel.app/) _(once deployed — placeholder for now)_
+**[geojson-lab.vercel.app](https://geojson-lab.vercel.app/)**
 
 ## What it does
 
