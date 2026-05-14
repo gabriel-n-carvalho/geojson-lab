@@ -1,0 +1,248 @@
+.wrap {
+  position: relative;
+  min-height: 0;
+  background: var(--bg-alt);
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+}
+
+.surface {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.surface[data-active='true'] {
+  pointer-events: auto;
+}
+
+.empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.emptyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 360px;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.emptyTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.emptyText {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.emptyCta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 14px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 13px;
+  margin-top: var(--space-2);
+  transition: background 0.12s ease;
+}
+
+.emptyCta:hover {
+  background: var(--accent-hover);
+}
+
+.emptyKbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-2);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.emptyKbd kbd {
+  font-family: var(--font-mono);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 10px;
+}
+
+.cursor-hand {
+  cursor: grab;
+}
+.cursor-point {
+  cursor: crosshair;
+}
+.cursor-polyline {
+  cursor: crosshair;
+}
+.cursor-polygon {
+  cursor: crosshair;
+}
+
+.dropOverlay {
+  position: absolute;
+  inset: var(--space-3);
+  border: 2px dashed var(--accent);
+  background: rgba(10, 132, 255, 0.08);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--accent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.statusPill {
+  position: absolute;
+  left: var(--space-3);
+  bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+
+.statusDot[data-state='ready'] {
+  background: var(--success);
+}
+.statusDot[data-state='error'] {
+  background: var(--danger);
+}
+.statusDot[data-state='loading'] {
+  background: var(--accent);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.drawingBanner {
+  position: absolute;
+  left: 50%;
+  top: var(--space-5);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px 14px 8px 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  font-size: 12px;
+  color: var(--text);
+  pointer-events: none;
+  z-index: 6;
+  max-width: calc(100% - var(--space-6) * 2);
+  animation: bannerIn 160ms ease-out;
+}
+
+@keyframes bannerIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.drawingBannerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(10, 132, 255, 0.12);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.drawingBannerLabel {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.drawingBannerHint {
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drawingBannerMeasure {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  margin-left: var(--space-2);
+  background: rgba(10, 132, 255, 0.1);
+  color: var(--accent);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.drawingBannerSep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  margin: 0 2px;
+}

@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+package-lock.json
+*.log
+.husky/_
+coverage
+playwright-report
+test-results
+.nyc_output
+

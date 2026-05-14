@@ -1,0 +1,81 @@
+{
+  "name": "geojson-lab",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:test": "VITE_COVERAGE=true vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "preview": "vite preview",
+    "prepare": "husky",
+    "typecheck": "tsc -b",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:unit:ui": "vitest --ui",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:install": "playwright install --with-deps",
+    "coverage": "npm run coverage:unit && npm run coverage:e2e && npm run coverage:merge && npm run coverage:report && npm run coverage:check",
+    "coverage:unit": "vitest run --coverage",
+    "coverage:e2e": "playwright test",
+    "coverage:merge": "nyc merge coverage/e2e/raw coverage/e2e/coverage-final.json && node scripts/merge-coverage.mjs",
+    "coverage:report": "nyc report --reporter=text --reporter=html --reporter=lcov --temp-dir=coverage/merged --report-dir=coverage/merged/report",
+    "coverage:check": "nyc check-coverage --branches 90 --functions 95 --lines 95 --statements 95 --temp-dir=coverage/merged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,json,md,html}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/state": "^6.6.0",
+    "@codemirror/theme-one-dark": "^6.1.3",
+    "@codemirror/view": "^6.42.1",
+    "@placemarkio/check-geojson": "^0.1.14",
+    "codemirror": "^6.0.2",
+    "jose": "^6.2.3",
+    "nanoid": "^5.1.11",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-istanbul": "^4.1.6",
+    "@vitest/ui": "^4.1.6",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "happy-dom": "^20.9.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.4",
+    "nyc": "^18.0.0",
+    "prettier": "^3.8.3",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.12",
+    "vite-plugin-istanbul": "^8.0.0",
+    "vitest": "^4.1.6"
+  }
+}

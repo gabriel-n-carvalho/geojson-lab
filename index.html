@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="geojson-lab — draw, edit, and share GeoJSON on Apple Maps. A geojson.io-style editor built on MapKit JS."
+    />
+    <title>geojson-lab — GeoJSON editor on Apple Maps</title>
+    <script
+      data-mapkit
+      crossorigin
+      async
+      src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"
+      data-callback="initMapKit"
+      data-libraries="map,annotations,overlays,services,geojson"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

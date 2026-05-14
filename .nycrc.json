@@ -1,0 +1,21 @@
+{
+  "all": false,
+  "include": ["src/**/*.{ts,tsx}"],
+  "exclude": [
+    "src/main.tsx",
+    "src/mapkit/types.ts",
+    "src/components/icons.tsx",
+    "src/test/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.module.css.d.ts"
+  ],
+  "reporter": ["text", "html", "lcov"],
+  "temp-dir": "coverage/merged",
+  "report-dir": "coverage/merged/report",
+  "check-coverage": true,
+  "branches": 90,
+  "functions": 95,
+  "lines": 95,
+  "statements": 95
+}

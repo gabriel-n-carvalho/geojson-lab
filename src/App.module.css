@@ -1,0 +1,30 @@
+.app {
+  display: grid;
+  grid-template-rows: var(--toolbar-h) 1fr;
+  height: 100vh;
+  width: 100vw;
+  background: var(--bg);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: var(--layers-w) 1fr var(--sidebar-w);
+  min-height: 0;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 960px) {
+  .body {
+    grid-template-columns: 1fr var(--sidebar-w);
+  }
+  .body > :global([aria-label='Feature list']) {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+}

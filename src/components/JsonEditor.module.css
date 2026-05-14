@@ -1,0 +1,99 @@
+.wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+}
+
+.host {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.host :global(.cm-editor) {
+  height: 100%;
+}
+
+.host :global(.cm-scroller) {
+  font-family: var(--font-mono);
+}
+
+.host :global(.cm-focused) {
+  outline: none !important;
+}
+
+.host :global(.cm-selectedFeature) {
+  background: rgba(0, 122, 255, 0.12);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-top: 1px solid var(--border);
+  background: var(--bg-alt);
+  font-size: 11px;
+  color: var(--text-muted);
+  min-height: 28px;
+}
+
+.statusBar[data-state='error'] {
+  background: rgba(255, 59, 48, 0.08);
+  color: var(--danger);
+}
+
+.statusBar[data-state='ok'] {
+  color: var(--text-muted);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.statusBar[data-state='error'] .dot {
+  background: var(--danger);
+}
+
+.copyBtn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.copyBtn:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.copyBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.copyBtn svg {
+  width: 14px;
+  height: 14px;
+}
