@@ -10,6 +10,7 @@ import {
   ResetIcon,
   FolderOpenIcon,
   DownloadIcon,
+  GitHubIcon,
 } from './icons'
 import styles from './Toolbar.module.css'
 
@@ -138,6 +139,17 @@ export function Toolbar() {
         <DownloadIcon />
         <span>Download GeoJSON</span>
       </button>
+
+      <a
+        href="https://github.com/gabriel-n-carvalho/geojson-lab"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.tool}
+        title="View on GitHub"
+        aria-label="View on GitHub"
+      >
+        <GitHubIcon />
+      </a>
 
       <input
         ref={fileInputRef}

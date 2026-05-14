@@ -40,7 +40,8 @@ To wire a real token:
    - `MAPKIT_TEAM_ID`
    - `MAPKIT_KEY_ID`
    - `MAPKIT_PRIVATE_KEY` (paste the full PEM contents of the `.p8` file)
-   - Optional: `MAPKIT_ORIGIN` for the `aud` claim, `ALLOWED_ORIGINS` allowlist
+   - Recommended for production: `MAPKIT_ORIGIN` (sets the JWT `origin` claim, scoping the token to your domain and silencing MapKit's unrestricted-token warning)
+   - Optional: `ALLOWED_ORIGINS` allowlist
 4. Run locally with `npx vercel dev` (not `npm run dev` — the bare Vite server doesn't serve `/api/*`). The SPA fetches `/api/mapkit-token`, the edge function signs a 30-minute JWT (cached server-side for ~25 min), and MapKit JS validates it.
 5. For deploys, set the same env vars in the Vercel project — never commit the `.p8`.
 

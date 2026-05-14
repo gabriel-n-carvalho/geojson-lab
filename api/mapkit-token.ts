@@ -50,13 +50,14 @@ export default async function handler(req: Request): Promise<Response> {
   try {
     const teamId = required('MAPKIT_TEAM_ID')
     const keyId = required('MAPKIT_KEY_ID')
-    const builder = new SignJWT({})
+    const payload: Record<string, string> = {}
+    if (process.env.MAPKIT_ORIGIN) payload.origin = process.env.MAPKIT_ORIGIN
+    const jwt = await new SignJWT(payload)
       .setProtectedHeader({ alg: 'ES256', kid: keyId, typ: 'JWT' })
       .setIssuer(teamId)
       .setIssuedAt(now)
       .setExpirationTime(now + TTL_SECONDS)
-    if (process.env.MAPKIT_ORIGIN) builder.setAudience(process.env.MAPKIT_ORIGIN)
-    const jwt = await builder.sign(await getKey())
+      .sign(await getKey())
     cached = { jwt, expiresAt: now + TTL_SECONDS }
     return new Response(jwt, responseHeaders())
   } catch {
