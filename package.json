@@ -44,7 +44,7 @@
     "@placemarkio/check-geojson": "^0.1.14",
     "codemirror": "^6.0.2",
     "jose": "^6.2.3",
-    "nanoid": "^5.1.11",
+    "nanoid": "^5.1.16",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "zustand": "^5.0.13"
